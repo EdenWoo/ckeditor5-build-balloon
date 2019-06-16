@@ -27,11 +27,13 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import Font from '@ckeditor/ckeditor5-font/src/font';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
 // Plugins to include in the build.
 BalloonEditor.builtinPlugins = [
+	Font,
 	Essentials,
 	UploadAdapter,
 	Autoformat,
@@ -57,6 +59,22 @@ BalloonEditor.builtinPlugins = [
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
+	fontFamily: {
+		options: [
+			'default',
+			'Arial, Helvetica, sans-serif',
+			'Courier New, Courier, monospace',
+			'Georgia, serif',
+			'Lucida Sans Unicode, Lucida Grande, sans-serif',
+			'Tahoma, Geneva, sans-serif',
+			'Times New Roman, Times, serif',
+			'Trebuchet MS, Helvetica, sans-serif',
+			'Verdana, Geneva, sans-serif',
+			'Font Family1',
+			'Font Family2',
+			'Font Family3'
+		]
+	},
 	toolbar: {
 		items: [
 			'heading',
@@ -64,14 +82,36 @@ BalloonEditor.defaultConfig = {
 			'bold',
 			'italic',
 			'link',
+			'|',
+			'fontFamily',
+			'|',
 			'bulletedList',
 			'numberedList',
 			'imageUpload',
+			'|',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
 			'undo',
 			'redo'
+		]
+	},
+	highlight: {
+		options: [
+			{
+				model: 'greenMarker',
+				class: 'marker-green',
+				title: 'Green marker',
+				color: 'var(--ck-highlight-marker-green)',
+				type: 'marker'
+			},
+			{
+				model: 'redPen',
+				class: 'pen-red',
+				title: 'Red pen',
+				color: 'var(--ck-highlight-pen-red)',
+				type: 'pen'
+			}
 		]
 	},
 	image: {
