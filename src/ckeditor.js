@@ -28,6 +28,7 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Font from '@ckeditor/ckeditor5-font/src/font';
+import Highlight from '@ckeditor/ckeditor5-highlight';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -54,7 +55,8 @@ BalloonEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Highlight
 ];
 
 // Editor configuration.
@@ -72,7 +74,24 @@ BalloonEditor.defaultConfig = {
 			'Verdana, Geneva, sans-serif',
 			'Font Family1',
 			'Font Family2',
-			'Font Family3'
+		]
+	},
+	highlight: {
+		options: [
+			{
+				model: 'greenMarker',
+				class: 'marker-green',
+				title: 'Green marker',
+				color: 'var(--ck-highlight-marker-green)',
+				type: 'marker'
+			},
+			{
+				model: 'redPen',
+				class: 'pen-red',
+				title: 'Red pen',
+				color: 'var(--ck-highlight-pen-red)',
+				type: 'pen'
+			}
 		]
 	},
 	toolbar: {
@@ -92,26 +111,9 @@ BalloonEditor.defaultConfig = {
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
+			'highlight',
 			'undo',
 			'redo'
-		]
-	},
-	highlight: {
-		options: [
-			{
-				model: 'greenMarker',
-				class: 'marker-green',
-				title: 'Green marker',
-				color: 'var(--ck-highlight-marker-green)',
-				type: 'marker'
-			},
-			{
-				model: 'redPen',
-				class: 'pen-red',
-				title: 'Red pen',
-				color: 'var(--ck-highlight-pen-red)',
-				type: 'pen'
-			}
 		]
 	},
 	image: {
